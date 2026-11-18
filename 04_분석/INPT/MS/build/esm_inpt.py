@@ -1,6 +1,6 @@
 import os, glob, json, re
 import pandas as pd
-from build_hsr_inpt import TX, put_table, OUT, N, to_pdf, TITLE
+from build_ms_inpt import TX, put_table, OUT, N, to_pdf, TITLE
 HERE = os.path.dirname(os.path.abspath(__file__)); B = os.path.abspath(os.path.join(HERE, "..", "..")); RS = os.path.join(B, "results_std3")
 VARS = {"walking_rate": "ext__walking_rate", "moderate_pa_rate": "moderate_pa_rate", "public_sport_fac_per100k": "ext__public_sport_fac_per100k", "village_sport_fac_per100k": "ext__village_sport_fac_per100k",
         "basic_livelihood_rate": "basic_livelihood_rate", "medicaid1_share": "ext__medicaid1_share", "chewing_discomfort_65": "ext__chewing_discomfort_65", "beds_per_1000": "ext__beds_per_1000",

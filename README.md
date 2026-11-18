@@ -4,7 +4,7 @@ Analysis code for the manuscript
 
 > Kim S. *Do more hospital beds mean more days in hospital? Inpatient care of residents across Korean districts, 2011-2024.*
 
-Archived version: Zenodo, https://doi.org/10.5281/zenodo.24332152 (v1.0.0).
+Archived version: Zenodo, https://doi.org/10.5281/zenodo.24332390 (v1.0.1).
 
 This code is released under the MIT licence.
 
@@ -16,7 +16,7 @@ This repository contains code only. The processed district-year data (analytic p
 |---|---|
 | `01_스크립트/` | Analysis scripts (below) |
 | `04_분석/INPT/` | Covariate pool and model settings (`make_pool_sets_inpt.py`, `sets_INPT_*.json`, `config_INPT_std3.json`), descriptive inpatient table builder (`inpt_aux_build.py`), the full model chain (`run_std3_chain.sh`) and the district adjacency graph (`graph_593.graph`). Sensitivity versions: queen contiguity graph `s577`, without the share aged 80 or older `s2`, unstandardised expected counts `sc` |
-| `04_분석/INPT/MS/build/` | Scripts that read the result tables and write every number, table and figure in the manuscript and appendix (`numbers_inpt.py`, `figs_inpt.py`, `content_inpt.py`, `content_hsr_inpt.py`, `build_tables_inpt.py`, `build_hsr_inpt.py`, `esm_inpt.py`, `build_refs_inpt.py`) |
+| `04_분석/INPT/MS/build/` | Scripts that read the result tables and write every number, table and figure in the manuscript and appendix (`numbers_inpt.py`, `figs_inpt.py`, `content_inpt.py`, `content_ms_inpt.py`, `build_tables_inpt.py`, `build_ms_inpt.py`, `journal_full.json`, `esm_inpt.py`, `build_refs_inpt.py`) |
 
 Folder and some column names are in Korean because the source tables are Korean; each script has a header comment describing its inputs and outputs.
 
