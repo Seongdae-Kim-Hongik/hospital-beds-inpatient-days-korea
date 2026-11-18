@@ -1,0 +1,224 @@
+{
+ "tag": "INPT",
+ "outcome_column": "ext__inpt_days",
+ "outcome_label_en": "Inpatient days of residents (inpatient days in hospitals inside plus outside the district of residence; NHIS regional health care utilisation statistics, annual)",
+ "disease_en": "Resident inpatient care use (inpatient days)",
+ "disease_ko": "거주지 입원 이용(관내+관외 입원 입내원일수)",
+ "forced": [
+  "ext__urban_population_share",
+  "ext__physicians_per_1000",
+  "ext__sex_ratio",
+  "ext__fiscal_independence",
+  "ext__pop80_share"
+ ],
+ "negative_controls": [
+  "ext__cpr_awareness_rate",
+  "ext__road_pavement_rate",
+  "ext__fires_per_10000"
+ ],
+ "offset_E_column": "E_crude",
+ "offset_E_file": "INPT_Estd3r.csv",
+ "offset_E_label": "crude E (population x national annual inpatient-day rate)",
+ "graph": "593-edge contact graph, ST_GRAPH=04_분석/INPT/graph_593.graph",
+ "sensitivity_only_extra": [
+  "ext__living_alone_elderly",
+  "ext__genhosp_per100k",
+  "ext__tertiary_educated_share",
+  "ext__clinics_per_100k"
+ ],
+ "sets": {
+  "S1_narrative_full": [
+   "ext__walking_rate",
+   "ext__moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k",
+   "ext__basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ext__ltc_hospitals_per100k_65"
+  ],
+  "S2_core": [
+   "ext__walking_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__beds_per_1000",
+   "ext__ltc_hospitals_per100k_65"
+  ],
+  "S3_physical_activity": [
+   "ext__walking_rate",
+   "ext__moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k"
+  ],
+  "S4_need": [
+   "ext__basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65"
+  ],
+  "S5_supply": [
+   "ext__beds_per_1000",
+   "ext__ltc_hospitals_per100k_65"
+  ],
+  "S6_need_supply": [
+   "ext__basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ext__ltc_hospitals_per100k_65"
+  ]
+ },
+ "transform": {
+  "ext__urban_population_share": "none",
+  "ext__physicians_per_1000": "none",
+  "ext__sex_ratio": "none",
+  "ext__fiscal_independence": "none",
+  "ext__pop80_share": "none",
+  "ext__cpr_awareness_rate": "none",
+  "ext__road_pavement_rate": "none",
+  "ext__fires_per_10000": "none",
+  "ext__living_alone_elderly": "none",
+  "ext__genhosp_per100k": "none",
+  "ext__tertiary_educated_share": "none",
+  "ext__clinics_per_100k": "none",
+  "ext__walking_rate": "none",
+  "ext__moderate_pa_rate": "none",
+  "ext__public_sport_fac_per100k": "none",
+  "ext__village_sport_fac_per100k": "none",
+  "ext__basic_livelihood_rate": "none",
+  "ext__medicaid1_share": "none",
+  "ext__chewing_discomfort_65": "none",
+  "ext__beds_per_1000": "none",
+  "ext__ltc_hospitals_per100k_65": "none"
+ },
+ "expected_direction": {
+  "ext__walking_rate": "-",
+  "ext__moderate_pa_rate": "-",
+  "ext__public_sport_fac_per100k": "-",
+  "ext__village_sport_fac_per100k": "-",
+  "ext__basic_livelihood_rate": "+",
+  "ext__medicaid1_share": "+",
+  "ext__chewing_discomfort_65": "+",
+  "ext__beds_per_1000": "+",
+  "ext__ltc_hospitals_per100k_65": "+"
+ },
+ "rules": {
+  "likelihood": "forced-only 모형 WAIC 낮은 쪽(Poisson/NB)",
+  "set_choice": "WAIC 최소, 4 이내면 변수 적은 세트",
+  "credible": "95% CrI 1 제외",
+  "vif_drop": 10,
+  "multiverse_specs": 200,
+  "main_model_note": "Principal model = S1_narrative_full (9 district characteristics + 5 forced controls). VIF>10 retained and reported.",
+  "years": [
+   2011,
+   2024
+  ],
+  "windows": {
+   "W1_2011-15": [
+    2011,
+    2015
+   ],
+   "W2_2016-19": [
+    2016,
+    2019
+   ],
+   "W3_2020-24": [
+    2020,
+    2024
+   ]
+  },
+  "covid_post_from": 2020
+ },
+ "note": "Outcome: inpatient days of residents in hospitals inside and outside the district of residence (NHIS), 229 districts, 2011-2024. Covariates: walking, moderate-or-higher physical activity, public and village sports facilities, public assistance recipients, Medical Aid type 1 share, chewing discomfort aged 65+, hospital beds per 1,000, long-term care hospitals per 100,000 aged 65+; five forced controls; negative control exposures CPR awareness, road paving and fires per 10,000; comparison outcomes total and outpatient visit-days.",
+ "extra_columns": {
+  "ext__inpt_days": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "inpt_days"
+  ],
+  "ext__urban_population_share": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "urban_population_share"
+  ],
+  "ext__physicians_per_1000": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "physicians_per_1000"
+  ],
+  "ext__sex_ratio": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "sex_ratio"
+  ],
+  "ext__fiscal_independence": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "fiscal_independence"
+  ],
+  "ext__pop80_share": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "pop80_share"
+  ],
+  "ext__cpr_awareness_rate": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "cpr_awareness_rate"
+  ],
+  "ext__road_pavement_rate": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "road_pavement_rate"
+  ],
+  "ext__fires_per_10000": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "fires_per_10000"
+  ],
+  "ext__living_alone_elderly": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "living_alone_elderly"
+  ],
+  "ext__genhosp_per100k": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "genhosp_per100k"
+  ],
+  "ext__tertiary_educated_share": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "tertiary_educated_share"
+  ],
+  "ext__clinics_per_100k": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "clinics_per_100k"
+  ],
+  "ext__walking_rate": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "walking_rate"
+  ],
+  "ext__moderate_pa_rate": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "moderate_pa_rate"
+  ],
+  "ext__public_sport_fac_per100k": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "public_sport_fac_per100k"
+  ],
+  "ext__village_sport_fac_per100k": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "village_sport_fac_per100k"
+  ],
+  "ext__basic_livelihood_rate": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "basic_livelihood_rate"
+  ],
+  "ext__medicaid1_share": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "medicaid1_share"
+  ],
+  "ext__chewing_discomfort_65": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "chewing_discomfort_65"
+  ],
+  "ext__beds_per_1000": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "beds_per_1000"
+  ],
+  "ext__ltc_hospitals_per100k_65": [
+   "EXT_canonical_pool_INPT_261115.csv",
+   "ltc_hospitals_per100k_65"
+  ]
+ }
+}

@@ -1,0 +1,438 @@
+{
+ "tag": "INPT",
+ "outcome_column": "ext__inpt_days",
+ "outcome_label_en": "Inpatient days of residents (inpatient days in hospitals inside plus outside the district of residence; NHIS regional health care utilisation statistics, annual)",
+ "disease_ko": "거주지 입원 이용(관내+관외 입원 입내원일수)",
+ "disease_en": "Resident inpatient care use (inpatient days)",
+ "forced": [
+  "urban_population_share",
+  "physicians_per_1000",
+  "sex_ratio",
+  "fiscal_independence",
+  "pop80_share"
+ ],
+ "candidates": [
+  "ext__walking_rate",
+  "moderate_pa_rate",
+  "ext__public_sport_fac_per100k",
+  "ext__village_sport_fac_per100k",
+  "basic_livelihood_rate",
+  "ext__medicaid1_share",
+  "ext__chewing_discomfort_65",
+  "ext__beds_per_1000",
+  "ltc_hospitals_per_100k_65"
+ ],
+ "negative_controls": [
+  "ext__cpr_awareness_rate",
+  "ext__road_pavement_rate",
+  "fires_per_10000"
+ ],
+ "sets": {
+  "S1_narrative_full": [
+   "ext__walking_rate",
+   "moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k",
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S2_core": [
+   "ext__walking_rate",
+   "ext__public_sport_fac_per100k",
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S3_physical_activity": [
+   "ext__walking_rate",
+   "moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k"
+  ],
+  "S4_need": [
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65"
+  ],
+  "S5_supply": [
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S6_need_supply": [
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S1b_obesity_sensitivity": [
+   "ext__walking_rate",
+   "moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k",
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65",
+   "obesity_rate"
+  ]
+ },
+ "sensitivity_sets": [
+  "S1b_obesity_sensitivity"
+ ],
+ "sensitivity_only_vars": [
+  "obesity_rate",
+  "ext__living_alone_elderly",
+  "genhosp_per100k",
+  "tertiary_educated_share",
+  "ext__clinics_per_100k"
+ ],
+ "offset_column": "population",
+ "offset_sensitivity": null,
+ "offset_fallback": null,
+ "exclude_years": [],
+ "vars": {
+  "urban_population_share": {
+   "key": "urban_population_share",
+   "column": "ext__urban_population_share",
+   "transform": "none",
+   "label_en": "Urban-zone population share (%)",
+   "label_ko": "도시지역 인구 비율",
+   "expected_direction": "",
+   "role": "forced",
+   "raw_key": "ext__urban_population_share"
+  },
+  "physicians_per_1000": {
+   "key": "physicians_per_1000",
+   "column": "ext__physicians_per_1000",
+   "transform": "none",
+   "label_en": "Physicians per 1000",
+   "label_ko": "인구 천명당 의사 수",
+   "expected_direction": "",
+   "role": "forced",
+   "raw_key": "ext__physicians_per_1000"
+  },
+  "sex_ratio": {
+   "key": "sex_ratio",
+   "column": "ext__sex_ratio",
+   "transform": "none",
+   "label_en": "Sex ratio (men per 100 women)",
+   "label_ko": "남녀성비",
+   "expected_direction": "",
+   "role": "forced",
+   "raw_key": "ext__sex_ratio"
+  },
+  "fiscal_independence": {
+   "key": "fiscal_independence",
+   "column": "ext__fiscal_independence",
+   "transform": "none",
+   "label_en": "Fiscal independence (%)",
+   "label_ko": "재정자주도",
+   "expected_direction": "",
+   "role": "forced",
+   "raw_key": "ext__fiscal_independence"
+  },
+  "pop80_share": {
+   "key": "pop80_share",
+   "column": "ext__pop80_share",
+   "transform": "none",
+   "label_en": "Population aged 80+ share (%)",
+   "label_ko": "80세 이상 인구 비율",
+   "expected_direction": "",
+   "role": "forced",
+   "raw_key": "ext__pop80_share"
+  },
+  "ext__walking_rate": {
+   "key": "ext__walking_rate",
+   "column": "ext__walking_rate",
+   "transform": "none",
+   "label_en": "ext__walking_rate",
+   "label_ko": "ext__walking_rate",
+   "expected_direction": "- (걷기 실천율: 신체활동 → 만성질환·낙상·허약 감소, 노년 입원 위험 감소; 체육 경로 주 가설)",
+   "role": "candidate",
+   "raw_key": "ext__walking_rate"
+  },
+  "moderate_pa_rate": {
+   "key": "moderate_pa_rate",
+   "column": "ext__moderate_pa_rate",
+   "transform": "none",
+   "label_en": "Moderate-or-higher physical activity rate (SR %)",
+   "label_ko": "중강도 이상 신체활동 실천율",
+   "expected_direction": "- (중강도 이상 신체활동 실천율: 입원·재입원 위험 감소 코호트 근거)",
+   "role": "candidate",
+   "raw_key": "ext__moderate_pa_rate"
+  },
+  "ext__public_sport_fac_per100k": {
+   "key": "ext__public_sport_fac_per100k",
+   "column": "ext__public_sport_fac_per100k",
+   "transform": "none",
+   "label_en": "ext__public_sport_fac_per100k",
+   "label_ko": "ext__public_sport_fac_per100k",
+   "expected_direction": "- (공공체육시설 인구 10만 명당: 지역 신체활동 기회 구조; 체육 경로 주 가설)",
+   "role": "candidate",
+   "raw_key": "ext__public_sport_fac_per100k"
+  },
+  "ext__village_sport_fac_per100k": {
+   "key": "ext__village_sport_fac_per100k",
+   "column": "ext__village_sport_fac_per100k",
+   "transform": "none",
+   "label_en": "ext__village_sport_fac_per100k",
+   "label_ko": "ext__village_sport_fac_per100k",
+   "expected_direction": "- (마을체육시설 인구 10만 명당: 농촌 생활권 신체활동 기회)",
+   "role": "candidate",
+   "raw_key": "ext__village_sport_fac_per100k"
+  },
+  "basic_livelihood_rate": {
+   "key": "basic_livelihood_rate",
+   "column": "ext__basic_livelihood_rate",
+   "transform": "none",
+   "label_en": "Basic-livelihood security recipient rate (%)",
+   "label_ko": "국민기초생활보장 수급자 비율",
+   "expected_direction": "+ (기초생활 수급률, 2021-23 양쪽 규칙 정정: 박탈·만성질환 부담 → 입원 필요 증가; 선별 단순 ρ 0.55)",
+   "role": "candidate",
+   "raw_key": "ext__basic_livelihood_rate"
+  },
+  "ext__medicaid1_share": {
+   "key": "ext__medicaid1_share",
+   "column": "ext__medicaid1_share",
+   "transform": "none",
+   "label_en": "ext__medicaid1_share",
+   "label_ko": "ext__medicaid1_share",
+   "expected_direction": "+ (의료급여 1종 진료실인원 인구 대비: 본인부담 거의 없음·장애·정신질환 동반 → 장기 입원; 선별 단순 ρ 0.49)",
+   "role": "candidate",
+   "raw_key": "ext__medicaid1_share"
+  },
+  "ext__chewing_discomfort_65": {
+   "key": "ext__chewing_discomfort_65",
+   "column": "ext__chewing_discomfort_65",
+   "transform": "none",
+   "label_en": "ext__chewing_discomfort_65",
+   "label_ko": "ext__chewing_discomfort_65",
+   "expected_direction": "+ (65세 이상 저작 불편 호소율: 구강 기능 저하·영양 결핍·허약 → 노년 입원; 선별 단순 ρ 0.41)",
+   "role": "candidate",
+   "raw_key": "ext__chewing_discomfort_65"
+  },
+  "ext__beds_per_1000": {
+   "key": "ext__beds_per_1000",
+   "column": "ext__beds_per_1000",
+   "transform": "none",
+   "label_en": "ext__beds_per_1000",
+   "label_ko": "ext__beds_per_1000",
+   "expected_direction": "+ (병상 인구 천 명당: 공급 유인 수요 — 병상이 많으면 입원이 늘고 재원이 길어진다(Roemer); 역인과 위험 → 시차 민감도)",
+   "role": "candidate",
+   "raw_key": "ext__beds_per_1000"
+  },
+  "ltc_hospitals_per_100k_65": {
+   "key": "ltc_hospitals_per_100k_65",
+   "column": "ext__ltc_hospitals_per100k_65",
+   "transform": "none",
+   "label_en": "Long-term care hospitals per 100k aged 65+",
+   "label_ko": "요양병원 수(65세 이상 10만 명당)",
+   "expected_direction": "+ (요양병원 65세 이상 10만 명당: 사회적 입원·장기 재원 공급; 역인과 위험 → 시차 민감도)",
+   "role": "candidate",
+   "raw_key": "ext__ltc_hospitals_per100k_65"
+  },
+  "obesity_rate": {
+   "key": "obesity_rate",
+   "column": "kchs__DT_H_OBE_OBE__SR",
+   "transform": "none",
+   "label_en": "Obesity rate (self-reported SR %)",
+   "label_ko": "비만율(자가보고)",
+   "expected_direction": "",
+   "role": "candidate_sensitivity",
+   "raw_key": "kchs__DT_H_OBE_OBE__SR"
+  },
+  "ext__living_alone_elderly": {
+   "key": "ext__living_alone_elderly",
+   "column": "ext__living_alone_elderly",
+   "transform": "none",
+   "label_en": "ext__living_alone_elderly",
+   "label_ko": "ext__living_alone_elderly",
+   "expected_direction": "",
+   "role": "candidate_sensitivity",
+   "raw_key": "ext__living_alone_elderly"
+  },
+  "genhosp_per100k": {
+   "key": "genhosp_per100k",
+   "column": "ext__genhosp_per100k",
+   "transform": "none",
+   "label_en": "General hospitals per 100k",
+   "label_ko": "종합병원 수(10만 명당)",
+   "expected_direction": "",
+   "role": "candidate_sensitivity",
+   "raw_key": "ext__genhosp_per100k"
+  },
+  "tertiary_educated_share": {
+   "key": "tertiary_educated_share",
+   "column": "ext__tertiary_educated_share",
+   "transform": "none",
+   "label_en": "Tertiary-educated share (%)",
+   "label_ko": "고등교육 이수 비율",
+   "expected_direction": "",
+   "role": "candidate_sensitivity",
+   "raw_key": "ext__tertiary_educated_share"
+  },
+  "ext__clinics_per_100k": {
+   "key": "ext__clinics_per_100k",
+   "column": "ext__clinics_per_100k",
+   "transform": "none",
+   "label_en": "ext__clinics_per_100k",
+   "label_ko": "ext__clinics_per_100k",
+   "expected_direction": "",
+   "role": "candidate_sensitivity",
+   "raw_key": "ext__clinics_per_100k"
+  },
+  "ext__cpr_awareness_rate": {
+   "key": "ext__cpr_awareness_rate",
+   "column": "ext__cpr_awareness_rate",
+   "transform": "none",
+   "label_en": "ext__cpr_awareness_rate",
+   "label_ko": "ext__cpr_awareness_rate",
+   "expected_direction": "",
+   "role": "negative",
+   "raw_key": "ext__cpr_awareness_rate"
+  },
+  "ext__road_pavement_rate": {
+   "key": "ext__road_pavement_rate",
+   "column": "ext__road_pavement_rate",
+   "transform": "none",
+   "label_en": "ext__road_pavement_rate",
+   "label_ko": "ext__road_pavement_rate",
+   "expected_direction": "",
+   "role": "negative",
+   "raw_key": "ext__road_pavement_rate"
+  },
+  "fires_per_10000": {
+   "key": "fires_per_10000",
+   "column": "ext__fires_per_10000",
+   "transform": "none",
+   "label_en": "Fires per 10 000 residents",
+   "label_ko": "주민 만명당 화재 발생 건수",
+   "expected_direction": "",
+   "role": "negative",
+   "raw_key": "ext__fires_per_10000"
+  }
+ },
+ "rules": {
+  "waic_tol": 4.0,
+  "cpo_fail_frac": 0.05,
+  "main_set": "S1_narrative_full",
+  "vif_threshold": 10.0,
+  "vif_action": "report",
+  "multiverse_n": 200,
+  "windows": {
+   "W1_2011-15": [
+    2011,
+    2015
+   ],
+   "W2_2016-19": [
+    2016,
+    2019
+   ],
+   "W3_2020-24": [
+    2020,
+    2024
+   ]
+  },
+  "covid_post_from": 2020,
+  "years": [
+   2011,
+   2024
+  ],
+  "raw_rules": {
+   "likelihood": "forced-only 모형 WAIC 낮은 쪽(Poisson/NB)",
+   "set_choice": "WAIC 최소, 4 이내면 변수 적은 세트",
+   "credible": "95% CrI 1 제외",
+   "vif_drop": 10,
+   "multiverse_specs": 200,
+   "main_model_note": "주모형 = S1_narrative_full(가설 9 + 강제통제 5). 세트를 다시 바꾸지 않음. VIF>10 유지·보고. 공급 변수(병상·요양병원)는 역인과 위험 → 88g 시차(lag1·lag2) 민감도로 판정.",
+   "years": [
+    2011,
+    2024
+   ],
+   "windows": {
+    "W1_2011-15": [
+     2011,
+     2015
+    ],
+    "W2_2016-19": [
+     2016,
+     2019
+    ],
+    "W3_2020-24": [
+     2020,
+     2024
+    ]
+   },
+   "covid_post_from": 2020
+  },
+  "main_model_note": "Principal model = S1_narrative_full (9 district characteristics + 5 forced controls). VIF>10 retained and reported."
+ },
+ "note": "Outcome: inpatient days of residents in hospitals inside and outside the district of residence (NHIS), 229 districts, 2011-2024. Covariates: walking, moderate-or-higher physical activity, public and village sports facilities, public assistance recipients, Medical Aid type 1 share, chewing discomfort aged 65+, hospital beds per 1,000, long-term care hospitals per 100,000 aged 65+; five forced controls; negative control exposures CPR awareness, road paving and fires per 10,000; comparison outcomes total and outpatient visit-days.",
+ "source_json": "sets_INPT_std3.json",
+ "suffix": "_std3",
+ "offset_E_column": "E_std",
+ "offset_E_file": "INPT_Estd3r.csv",
+ "offset_E_sensitivity_column": null,
+ "offset_E_label": "sex-and-age-standardised expected inpatient days, 2 sexes x 18 five-year bands to 85+ (national inpatient-day rates, NHIS TX_35001_A047), 2011-2024",
+ "sets_after_vif": {
+  "S1_narrative_full": [
+   "ext__walking_rate",
+   "moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k",
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S2_core": [
+   "ext__walking_rate",
+   "ext__public_sport_fac_per100k",
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S3_physical_activity": [
+   "ext__walking_rate",
+   "moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k"
+  ],
+  "S4_need": [
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65"
+  ],
+  "S5_supply": [
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S6_need_supply": [
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65"
+  ],
+  "S1b_obesity_sensitivity": [
+   "ext__walking_rate",
+   "moderate_pa_rate",
+   "ext__public_sport_fac_per100k",
+   "ext__village_sport_fac_per100k",
+   "basic_livelihood_rate",
+   "ext__medicaid1_share",
+   "ext__chewing_discomfort_65",
+   "ext__beds_per_1000",
+   "ltc_hospitals_per_100k_65",
+   "obesity_rate"
+  ]
+ }
+}
